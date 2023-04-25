@@ -58,7 +58,7 @@ function inicializaMarcadores(){
         campo.addClass("borda-vermelha");
         campo.removeClass("borda-verde");
         }
-    });
+    }); 
 }
 
 function reiniciaJogo(){
