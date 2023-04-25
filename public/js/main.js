@@ -1,6 +1,6 @@
 var frase = $(".frase").text();
 var numPalavras = frase.split(" ").length;
-var tamanhoFrase = $("#tamanhoFrase");
+var tamanhoFrase = $("#tamanho-frase");
 tamanhoFrase.text(numPalavras)
 
 
@@ -13,11 +13,19 @@ campo.on("input",function(){
 
     var qtdCaracteres = conteudo.length;
     $("#contador-caracteres").text(qtdCaracteres);
-
-    console.log(qtdPalavras);
-    console.log(qtdCaracteres);
 });
 
-
+var tempoRestante = $("#tempo-digitacao").text();
+campo.one("focus",function(){
+    var cronometroID = setInterval(function(){
+        tempoRestante--;
+        console.log(tempoRestante);
+        $("#tempo-digitacao").text(tempoRestante)
+        if(tempoRestante < 1){
+            campo.attr("disabled", true);
+            clearInterval(cronometroID);
+        }
+    },1000);   
+});
 
 
