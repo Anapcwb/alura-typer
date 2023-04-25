@@ -69,7 +69,14 @@ function inicializaMarcadores(){
 function inserePlacar(){
     var corpoTabela = $(".placar").find("tbody");
     var usuario = "Ana";
-    var numPalavras =$("#contador-palavras").text();
+    var numPalavras = $("#contador-palavras").text();
+
+    var linha = "<tr>"+
+                    "<td>"+ usuario + "</td>"+
+                    "<td>"+ numPalavras + "</td>"+
+                "</tr>";
+
+    corpoTabela.prepend(linha);
 }
 
 
