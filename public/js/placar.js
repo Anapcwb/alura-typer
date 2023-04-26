@@ -60,3 +60,7 @@ function removeLinha(){
 function mostraPlacar(){
     $(".placar").stop().slideToggle(600);//A função stop controla melhor as nossas animações. Neste caso se o usuario clicar varias vezes no boao mostrarPlacar o placar nao vai aparecer e sumir varias vezes e sim ele vai assumir o ultimo click.
 }
+
+function sincronizaPlacar(){
+    console.log("oi");
+}
