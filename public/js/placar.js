@@ -12,7 +12,18 @@ function inserePlacar(){
     var linha = novaLinha(usuario,numPalavras);
     linha.find(".botao-remover").click(removeLinha);
 
-    corpoTabela.prepend(linha);
+    corpoTabela.append(linha);
+
+    $(".placar").slideDown(500); // nova linha
+    scrollPlacar();
+}
+
+function scrollPlacar(){
+    var posicaoPlacar = $(".placar").offset().top;
+    $("html, body").animate(
+    {
+        scrollTop: posicaoPlacar+"px"
+    },1000);
 }
 
 function novaLinha(usuario,palavras){
@@ -35,13 +46,17 @@ function novaLinha(usuario,palavras){
     return linha;
 }
 
+// funcao responsavel por remover um elemento
 function removeLinha(){
     event.preventDefault();
-    $(this).parent().parent().remove();
+    var linha =  $(this).parent().parent();
+    linha.fadeOut(1000);// o fadeOut vai removendo a opacidade do elemento até um ponto e depois modifica a sua propriedade display, fazendo com que o elemento desapareça da tela, mas continue no HTML.
+    setTimeout(function(){ //a funcao setTimeout vai fazer com que o fadeOut aconteca antes da linha ser removida em linha.remove().
+        linha.remove();
+    },1000);
 }
 
 // Como alternar entre as funções slideDown e slideUp com a função slideToggle
 function mostraPlacar(){
-    $(".placar").slideToggle(600);
-
+    $(".placar").stop().slideToggle(600);//A função stop controla melhor as nossas animações. Neste caso se o usuario clicar varias vezes no boao mostrarPlacar o placar nao vai aparecer e sumir varias vezes e sim ele vai assumir o ultimo click.
 }
