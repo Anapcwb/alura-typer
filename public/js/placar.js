@@ -1,3 +1,9 @@
+
+
+
+$("#botao-placar").click(mostraPlacar);
+
+
 function inserePlacar(){
     var corpoTabela = $(".placar").find("tbody");
     var usuario = "Ana";
@@ -32,4 +38,10 @@ function novaLinha(usuario,palavras){
 function removeLinha(){
     event.preventDefault();
     $(this).parent().parent().remove();
+}
+
+// Como alternar entre as funções slideDown e slideUp com a função slideToggle
+function mostraPlacar(){
+    $(".placar").slideToggle(600);
+
 }
