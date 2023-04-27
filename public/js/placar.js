@@ -1,7 +1,6 @@
-
-
-
 $("#botao-placar").click(mostraPlacar);
+$("#botao-sync").click(sincronizaPlacar);
+
 
 
 function inserePlacar(){
@@ -62,5 +61,25 @@ function mostraPlacar(){
 }
 
 function sincronizaPlacar(){
-    console.log("oi");
+   var placar = []; //pegamos o placar e criei um array
+   var linhas = $("tbody>tr"); //como o arrey objtive as linhas da tabela
+   linhas.each(function(){ //iterei as linhas pegando o numero de usuarios e palavras
+        var usuario = $(this).find("td:nth-child(1)").text();
+        var palavras = $(this).find("td:nth-child(2)").text();
+        
+        var score = { //objeto javascript onde salvei 
+            usuario: usuario,
+            pontos: palavras
+        };
+        placar.push(score); //inseri o objeto js dentro do array placar
+        
+   });
+  
+   var dados = { //inseri o array placar neste objeto js chamado dados
+    placar: placar 
+   };
+
+   $.post("http://localhost:3000/placar",dados, function(){ //envia atraves de uma requisicao post para o servidor no endereco indicado
+    console.log("salvou o placar");
+   });
 }
