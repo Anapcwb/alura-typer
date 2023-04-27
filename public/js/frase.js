@@ -1,11 +1,9 @@
 $("#botao-frase").click(fraseAleatoria);
 $("#botao-frase-id").click(buscaFrase);
 
-
 function fraseAleatoria(){
     $("#spinner").toggle();
-
-    $.get("http://localhost:3000/frases", trocaFraseAleatoria)
+    $.get("http://192.168.0.83:3000/frases", trocaFraseAleatoria)
     .fail(function(){
         $("#erro").toggle();
         setTimeout(function(){
