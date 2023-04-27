@@ -1,8 +1,6 @@
 $("#botao-placar").click(mostraPlacar);
 $("#botao-sync").click(sincronizaPlacar);
 
-
-
 function inserePlacar(){
     var corpoTabela = $(".placar").find("tbody");
     var usuario = "Ana";
@@ -87,8 +85,10 @@ function sincronizaPlacar(){
 function atualizaPlacar(){
 
    $.get("http://localhost:3000/placar",function(data){ 
+        console.log("placar atualizado")
         $(data).each(function(){
             var linha = novaLinha(this.usuario, this.pontos);
+            linha.find(".botao-remover").click(removeLinha);
             $("tbody").append(linha);
         });  
 });
