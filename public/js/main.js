@@ -8,6 +8,11 @@ $(function(){
     inicializaMarcadores();
     $("#botao-reiniciar").click(reiniciaJogo);
     atualizaPlacar();
+   
+    $("#usuarios").selectize({ //objeto js que tem a propriedade create com valor true e a propriedade sortField com a string text.
+        create: true,
+        sortField: 'text'
+    });
 });
 
 function atualizaTempoInicial(tempo){
